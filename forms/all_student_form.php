@@ -21,6 +21,63 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+
+         <div class="row">
+
+         <div class="col-md-12">
+         
+        <div class="box box-default">
+
+
+<div class="box-header with-border">
+  <h3 class="box-title">Filter</h3>
+</div>
+
+<div class="box-body">
+                
+  
+                <div class="row">
+                <div class="col-xs-3 form-group">
+                <label for="exampleInputEmail1">Course</label>
+                  
+                <?php 
+
+$course_options = array(
+  'all'         => 'All',
+  'vocal'         => 'Vocal',
+  'guitar'           => 'Guitar',
+  'keyboard'         => 'Keyboard',
+  'dance'        => 'Dance',
+);
+
+
+echo form_dropdown('filter_course', $course_options, 'all', ['class'=>'form-control','style'=>'width:100%']);
+
+?>
+                   </div>
+                <div class="col-xs-3 form-group">
+                <label for="exampleInputEmail1">From</label>
+                  <input required id="exampleInputEmail1" name='filter_from_date' type="text" class="datepicker form-control" placeholder="Date From">
+                </div>
+                <div class="col-xs-3 form-group">
+                <label for="exampleInputEmail1">To</label>
+                  <input required id="exampleInputEmail1" name='filter_to_date' type="text"  class="datepicker form-control" placeholder="Date To">
+                </div>
+                <div class="col-xs-3 form-group">
+                <label for="exampleInputEmail1">Action</label>
+                <button type="submit" class="btn btn-warning btn-block">Filter</button>
+                </div>
+                
+            
+                 
+                </div>
+              
+             </div> 
+            </div>  
+         </div>
+
+         </div> 
+
         <div class="row">
         <!-- left column -->
         <div class="col-md-12">

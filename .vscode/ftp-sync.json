@@ -1,0 +1,28 @@
+{
+    "remotePath": "./htdocs/wp-content/themes/musicipa",
+    "host": "ftpupload.net",
+    "username": "epiz_23567240",
+    "password": "oMM6HKLnrOi",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": true,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ""
+        ],
+        "path": "C:/xampp/htdocs/wp/wp-content/themes/musicipa",
+        "uploadOnSave ":true
+    }
+}

@@ -10,6 +10,17 @@ function check_pages_live(){
         if(get_page_by_title( 'student') == NULL) {
             create_pages_fly('student');
         }
+
+        if( get_page_by_title('all_student') == NULL ){
+            create_pages_fly('all_student');
+        }
+
+        if( get_page_by_title('all_fee') == NULL ){
+            create_pages_fly('all_fee');
+        }
+        if( get_page_by_title('all_lead') == NULL ){
+            create_pages_fly('all_lead');
+        }
     }
 
 

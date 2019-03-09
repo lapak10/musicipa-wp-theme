@@ -5,7 +5,7 @@
     “Without music, life would be a blank to me.”― Jane Austen
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; <?php echo date('Y')?> <a href="#">MusicIPA</a></strong>
+    <strong>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="#">MusicIPA</a></strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -109,6 +109,10 @@ $('#example2').DataTable();
 
 jQuery('.datepicker').datepicker({
       autoclose: true
+    })
+
+    jQuery(".datepicker").attr('autocomplete',function(){
+      return 'off';
     })
 
     jQuery('.timepicker').timepicker({

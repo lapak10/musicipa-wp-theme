@@ -9,7 +9,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>IPA</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">Music<b>IPA</b></span>
+      <span class="logo-lg"><b>IPA</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -23,7 +23,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
+          <li class="hide dropdown messages-menu">
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -59,7 +59,7 @@
           <!-- /.messages-menu -->
 
           <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
+          <li class="hide dropdown notifications-menu">
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -82,7 +82,7 @@
             </ul>
           </li>
           <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
+          <li class="hide dropdown tasks-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
@@ -125,7 +125,7 @@
               <!-- The user image in the navbar-->
               <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Anand Kumar</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->

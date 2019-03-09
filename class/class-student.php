@@ -22,6 +22,8 @@ class IPA_Student{
         
         add_post_meta( $student_id, 'ipa_id', $new_ipa_id ,true);
 
+        self :: add_mysql_date ( $student_id , $data_array['date_of_joining'] );
+
         wp_update_post(
             array(
                 'ID' =>  $student_id,
@@ -45,6 +47,60 @@ class IPA_Student{
 
 
     }
+
+    private static function add_mysql_date($student_id, $date_string){
+
+        $date = DateTime::createFromFormat('d/m/Y', $date_string );
+        $mysql_date = $date->format('Y-m-d');
+
+        return add_post_meta( $student_id ,'mysql_date',$mysql_date,true);
+
+
+    }
+
+    public static function apply_filter( $filter_array ){
+        $args = array( 
+
+            'posts_per_page' => -1,
+             'post_type' => self:: $post_type ,
+             'post_status' => 'publish'
+             
+        );        
+
+        $filter_search = array(
+            'meta_query' => array(
+           // array('key'=>'from_factory','value' => '' ,'compare'=> 'NOT EXISTS' )
+            //'relation' => 'AND'
+                //array('key' => 'load_source_city','value' => $_POST['load_source_city']),
+                //array('key' => 'load_destination_city','value' => $_POST['load_destination_city']),
+                //array('key' => 'load_truck_type','value' => $_GET['load_truck_type']),
+                //array('key' => 'load_weight_capacity','value' => $_GET['load_weight_capacity']),
+                //array('key' => 'load_date','value' => $_POST['load_date'])
+                )
+            );
+            
+            if(isset(  $filter_array['filter_course'] ) AND 'any' != $filter_array['filter_course'] ){
+            //$filter_search['meta_query'] = array('key' => 'filter_course','value' => $filter_array['filter_course']);
+            array_push($filter_search['meta_query'] ,array(array('key' => 'course','value' => $filter_array['filter_course'])));
+            }
+
+            if(isset($filter_array['filter_from_date']) AND '' != $filter_array['filter_from_date'] ){
+            array_push($filter_search['meta_query'] ,array(array('key' => 'mysql_date', 'compare' => '>=','type' => 'DATE' ,'value' => DateTime ::createFromFormat('d/m/Y',  $filter_array['filter_from_date'] )->format('Y-m-d')   )));
+            }
+
+            if(isset($filter_array['filter_to_date']) AND '' != $filter_array['filter_to_date'] ){
+                array_push($filter_search['meta_query'] ,array(array('key' => 'mysql_date', 'compare' => '<=','type' => 'DATE' ,'value' => DateTime ::createFromFormat('d/m/Y',  $filter_array['filter_to_date'] )->format('Y-m-d')   )));
+            }
+            
+            
+            //wp_die(var_dump($filter_search));
+            
+            $args = array_merge($args,$filter_search);
+
+            return get_posts( $args );
+        
+    }
+
 
     public static function get_student_with_id($id = ''){
 
@@ -113,6 +169,10 @@ class IPA_Student{
 
     public static function get_mother_name($id){
         return ucwords( get_post_meta( $id, 'mother_name',true ) );
+    }
+
+    public static function get_date_of_joining($id){
+        return ucwords( get_post_meta( $id, 'date_of_joining',true ) );
     }
 
 

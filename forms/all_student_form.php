@@ -37,38 +37,33 @@
                 
   
                 <div class="row">
+                <form method='get'>
                 <div class="col-xs-3 form-group">
                 <label for="exampleInputEmail1">Course</label>
                   
                 <?php 
 
-$course_options = array(
-  'all'         => 'All',
-  'vocal'         => 'Vocal',
-  'guitar'           => 'Guitar',
-  'keyboard'         => 'Keyboard',
-  'dance'        => 'Dance',
-);
+$course_options = get_courses_array( true );
 
 
-echo form_dropdown('filter_course', $course_options, 'all', ['class'=>'form-control','style'=>'width:100%']);
+echo form_dropdown('filter_course', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'all'  , ['class'=>'form-control','style'=>'width:100%']);
 
 ?>
                    </div>
                 <div class="col-xs-3 form-group">
                 <label for="exampleInputEmail1">From</label>
-                  <input required id="exampleInputEmail1" name='filter_from_date' type="text" class="datepicker form-control" placeholder="Date From">
+                  <input value='<?php echo isset( $_GET['filter_from_date'] )? $_GET['filter_from_date'] : '';?>' id="exampleInputEmail1"  name='filter_from_date' type="text" class="datepicker form-control" placeholder="Date From">
                 </div>
                 <div class="col-xs-3 form-group">
                 <label for="exampleInputEmail1">To</label>
-                  <input required id="exampleInputEmail1" name='filter_to_date' type="text"  class="datepicker form-control" placeholder="Date To">
+                  <input  value='<?php echo isset( $_GET['filter_to_date'] )? $_GET['filter_to_date'] : '';?>'  id="exampleInputEmail1"  name='filter_to_date' type="text"  class="datepicker form-control" placeholder="Date To">
                 </div>
                 <div class="col-xs-3 form-group">
                 <label for="exampleInputEmail1">Action</label>
-                <button type="submit" class="btn btn-warning btn-block">Filter</button>
+                <button type="submit" name='filter_form' value='search' class="btn btn-warning btn-block">Filter</button>
                 </div>
                 
-            
+            </form>
                  
                 </div>
               
@@ -105,18 +100,32 @@ echo form_dropdown('filter_course', $course_options, 'all', ['class'=>'form-cont
                   <th>Name</th>
                   <th>Course</th>
                   <th>Phone</th>
+                  <th>Date Of Joining</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                
-    <?php foreach( IPA_Student :: get_all_students() as $student_obj ){
+    <?php $all_students = '';
+
+   if( isset( $_GET['filter_form'] ) ){
+
+    $all_students = IPA_Student :: apply_filter( $_GET );
+
+  }else{
+
+    $all_students = IPA_Student :: get_all_students();
+
+  }
+    
+    foreach( $all_students as $student_obj ){
 
         echo '<tr>';
         echo '<td>' . IPA_Student :: get_student_virtual_ipa_id ( $student_obj->ID ) . '</td>';
         echo '<td>' . IPA_Student :: get_name ( $student_obj->ID ) . '</td>';
         echo '<td>' . IPA_Student :: get_course ( $student_obj->ID ) . '</td>';
         echo '<td>' . IPA_Student :: get_phone_no ( $student_obj->ID ) . '</td>';
+        echo '<td>' . IPA_Student :: get_date_of_joining ( $student_obj->ID ) . '</td>';
         echo '<td>' . 'ACTION' . '</td>';
         echo '</td>';
 
@@ -135,10 +144,12 @@ echo form_dropdown('filter_course', $course_options, 'all', ['class'=>'form-cont
                 </tbody>
                 <tfoot>
                 <tr>
+               
                 <th>ID</th>
                   <th>Name</th>
                   <th>Course</th>
                   <th>Phone</th>
+                  <th>Date Of Joining</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>

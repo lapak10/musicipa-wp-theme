@@ -98,12 +98,7 @@ if( isset ($student_id) ){
 
 <?php 
 
-$course_options = array(
-  'vocal'         => 'Vocal',
-  'guitar'           => 'Guitar',
-  'keyboard'         => 'Keyboard',
-  'dance'        => 'Dance',
-);
+$course_options = get_courses_array();
 
 
 echo form_dropdown('course', $course_options,  $student_data['course'][0] , ['class'=>'form-control','disabled'=> 'true' ,'style'=>'width:100%']);
@@ -125,12 +120,7 @@ echo form_dropdown('course', $course_options,  $student_data['course'][0] , ['cl
                 
                 <?php 
 
-$music_certification_options = array(
-  'none'         => ' Not Applicable',
-  'absm'           => 'ABSM',
-  'prayag'         => 'Prayaag',
-  'trinity'        => 'Trinity',
-);
+$music_certification_options = get_certifications_array();
 
 
 echo form_dropdown('music_certification', $music_certification_options,  $student_data['music_certification'][0] , ['class'=>'form-control','disabled'=> 'true' ,'style'=>'width:100%']);
@@ -218,12 +208,7 @@ echo form_dropdown('music_certification', $music_certification_options,  $studen
 
 <?php 
 
-$course_options = array(
-  'vocal'         => 'Vocal',
-  'guitar'           => 'Guitar',
-  'keyboard'         => 'Keyboard',
-  'dance'        => 'Dance',
-);
+$course_options = get_courses_array();
 
 
 echo form_dropdown('course', $course_options, 'guitar', ['class'=>'form-control','style'=>'width:100%']);
@@ -246,12 +231,7 @@ echo form_dropdown('course', $course_options, 'guitar', ['class'=>'form-control'
                 
                 <?php 
 
-$music_certification_options = array(
-  'none'         => ' Not Applicable',
-  'absm'           => 'ABSM',
-  'prayag'         => 'Prayaag',
-  'trinity'        => 'Trinity',
-);
+$music_certification_options = get_certifications_array();
 
 
 echo form_dropdown('music_certification', $music_certification_options, 'none', ['class'=>'form-control','style'=>'width:100%']);

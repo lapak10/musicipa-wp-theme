@@ -94,12 +94,7 @@ echo form_dropdown('parent_gender', $course_options, 'mr', ['class'=>'form-contr
                 <label>Course</label>
                 <?php 
 
-$course_options = array(
-  'vocal'         => 'Vocal',
-  'guitar'           => 'Guitar',
-  'keyboard'         => 'Keyboard',
-  'dance'        => 'Dance',
-);
+$course_options = get_courses_array();
 
 
 echo form_dropdown('course', $course_options, 'vocal' , ['class'=>'form-control' ,'style'=>'width:100%']);
@@ -210,12 +205,7 @@ echo form_dropdown('parent_gender', $course_options, $_POST['parent_gender'] , [
                 <label>Course</label>
                 <?php 
 
-$course_options = array(
-  'vocal'         => 'Vocal',
-  'guitar'           => 'Guitar',
-  'keyboard'         => 'Keyboard',
-  'dance'        => 'Dance',
-);
+$course_options = get_courses_array();
 
 
 echo form_dropdown('course', $course_options, $_POST['course'] , ['class'=>'form-control' ,'disabled'=> 'true','style'=>'width:100%']);

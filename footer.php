@@ -5,7 +5,7 @@
     <?php  echo ipa_random_music_quote();  ?>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="#"> IPA - Institute of Performing Arts</a></strong>
+    <strong>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="<?php echo get_home_url() ?>"> IPA - Institute of Performing Arts</a></strong>
   </footer>
 <?php if( 1 > 0 ): ?>
   <!-- Control Sidebar -->

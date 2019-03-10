@@ -133,7 +133,7 @@
                 <img src="<?php echo IPA_User :: get_user_avatar_url(); ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Anand Kumar - Manager
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -159,7 +159,7 @@
                 </div> -->
                 <div class="row">
                   <div class="col-xs-12 text-center">
-                  <a href="<?php echo wp_logout_url(); ?>" class="btn btn-warning btn-block btn-flat">Sign out</a>
+                  <a href="<?php echo wp_logout_url(); ?>" class="btn btn-warning btn-block">Sign out</a>
                 </div>
                 </div>
               </li>

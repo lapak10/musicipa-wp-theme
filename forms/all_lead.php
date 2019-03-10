@@ -21,6 +21,75 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+
+        <div class="row">
+
+<div class="col-md-12">
+
+<div class="box box-default">
+
+
+<div class="box-header with-border">
+<h3 class="box-title">Filter</h3>
+</div>
+
+<div class="box-body">
+       
+
+       <div class="row">
+       <form method='get'>
+       <div class="col-xs-3 form-group">
+       <label for="exampleInputEmail1">Course</label>
+         
+       <?php 
+
+$course_options = get_courses_array( true );
+
+
+echo form_dropdown('filter_course', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'all'  , ['class'=>'form-control','style'=>'width:100%']);
+
+?>
+          </div>
+
+          <div class="col-xs-3 form-group">
+       <label for="exampleInputEmail1">Age Group</label>
+         
+       <?php 
+
+$course_options = array(
+  'any' => 'All',
+  'kid'         => 'Kid',
+  'teen'         => 'Teen',
+  'adult'           => 'Adult'
+  
+);
+
+
+echo form_dropdown('filter_age_group', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'all'  , ['class'=>'form-control','style'=>'width:100%']);
+
+?>
+          </div>
+
+       <div class="col-xs-3 form-group">
+       <label for="exampleInputEmail1">Demo Date</label>
+         <input value='<?php echo isset( $_GET['filter_demo_date'] )? $_GET['filter_demo_date'] : '';?>' id="exampleInputEmail1"  name='filter_demo_date' type="text" class="datepicker form-control" placeholder="Demo Date">
+       </div>
+        
+       <div class="col-xs-3 form-group">
+       <label for="exampleInputEmail1">Action</label>
+       <button type="submit" name='filter_form' value='search' class="btn btn-warning btn-block">Filter</button>
+       </div>
+       
+   </form>
+        
+       </div>
+     
+    </div> 
+   </div>  
+</div>
+
+</div> 
+
         <div class="row">
         <!-- left column -->
         <div class="col-md-12">

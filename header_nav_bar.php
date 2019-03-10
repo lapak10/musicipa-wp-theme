@@ -123,14 +123,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?php echo IPA_User :: get_user_avatar_url(); ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Anand Kumar</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo IPA_User :: get_user_avatar_url(); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer

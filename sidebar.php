@@ -7,7 +7,7 @@
   <!-- Sidebar user panel (optional) -->
   <div class="user-panel">
     <div class="pull-left image">
-      <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      <img src="<?php echo IPA_User :: get_user_avatar_url();//get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
       <p>Anand Kumar</p>
@@ -17,7 +17,7 @@
   </div>
 
   <!-- search form (Optional) -->
-  <form action="#" method="get" class="sidebar-form">
+  <!-- <form action="#" method="get" class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search...">
       <span class="input-group-btn">
@@ -25,12 +25,12 @@
           </button>
         </span>
     </div>
-  </form>
+  </form> -->
   <!-- /.search form -->
 
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu" data-widget="tree">
-    <li class="header">HEADER</li>
+    <!-- <li class="header">Menu</li> -->
     <!-- Optionally, you can add icons to the links -->
 <!--     
     <li class="<?php //echo is_page('student')?'active':''  ?>"><a href="<?php echo get_permalink( get_page_by_title('student') ) ?>"><i class="fa fa-link"></i> <span>Student Management</span></a></li>

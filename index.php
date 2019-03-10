@@ -9,6 +9,8 @@ require_once('class/class-fees.php');
 
 require_once('class/class-demo.php');
 
+require_once('class/class-user.php');
+
 function ipa_random_music_quote(){
     $quotes = array(
       '“Without music, life would be a blank to me.”― Jane Austen',

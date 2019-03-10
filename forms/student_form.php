@@ -1,8 +1,26 @@
 <?php 
 
-if ( isset(  $_POST['student_name'] ) ) {
+if( isset( $_POST['update_student'] ) ){
+
+  $student_updated_ok = IPA_Student :: update_student( $_POST['update_student'] , $_POST );
+
+  //update_post_meta( $_POST['update_student'] , 'phone',  $_POST['phone'] );
+
+}
+else if ( isset(  $_POST['student_name'] ) ) {
   $student_id = IPA_Student :: save_new_student( $_POST ); 
 }
+
+
+
+if ( isset(  $_GET['student_id'] ) AND IPA_Student :: is_valid_student( $_GET[ 'student_id' ] ) ) {
+
+  $student_update_obj = get_post( $_GET[ 'student_id' ] ) ;
+  $student_data = get_post_meta( $_GET['student_id'] );
+
+}
+
+
 
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -30,11 +48,132 @@ if ( isset(  $_POST['student_name'] ) ) {
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">New Student</h3>
+             
+            <?php 
+//update form start
+if( isset( $student_update_obj ) ): ?>
 
+<h3 class="box-title">Update Student</h3>
+<?php else: ?>
+<h3 class="box-title">New Student</h3>
+<?php endif; ?>
             </div>
             <!-- /.box-header -->
+<?php 
+//update form start
+if( isset( $student_update_obj ) ): ?>
 
+ <!-- form start -->
+ <form role="form" method='post'>
+              <div class="box-body">
+
+    <?php if ( isset( $student_updated_ok ) AND $student_updated_ok ) :?>
+              <div class="callout callout-success">
+                <h4> <?php echo get_the_title( $student_updated_ok ); ?></h4>
+
+                <p>Student records updated successfully </p>
+              </div>
+<?php endif; ?>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Student Name</label>
+                  <input required type="text" name='student_name' class="form-control" id="exampleInputEmail1" placeholder="Student Name" value="<?php echo $student_data['student_name'][0]; ?>">
+                </div>
+             
+               
+                <div class="row">
+                <div class="col-xs-6 form-group">
+                <label for="exampleInputEmail1">Father's Name</label>
+                  <input required id="exampleInputEmail1" name='father_name' type="text" class="form-control" placeholder="Father's Name" value="<?php echo $student_data['father_name'][0]; ?>">
+                </div>
+                <div class="col-xs-6 form-group">
+                <label for="exampleInputEmail1">Mother's Name</label>
+                  <input required id="exampleInputEmail1" name='mother_name' type="text" class="form-control" placeholder="Mother's Name" value="<?php echo $student_data['mother_name'][0]; ?>">
+                </div>
+                
+              </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Address</label>
+                  <textarea required  name='address' class="form-control" rows='3' id="exampleInputPassword1" placeholder="Address"><?php echo $student_data['address'][0]; ?></textarea>
+                </div>
+
+
+                <div class="row">
+                <div class="col-xs-6 form-group">
+                <label for="exampleInputPassword1">Phone No.</label>
+                  <input required title="10 digit mobile number"  type="text" name='phone' pattern='[0-9]{10}' class="form-control" id="exampleInputPassword1" placeholder="Phone No." value="<?php echo $student_data['phone'][0]; ?>">
+                </div>
+                <div class="col-xs-6 form-group">
+                <label for="exampleInputPassword1">Alternate Phone No. (Optional)</label>
+                  <input type="text" name='phone_alternative' class="form-control" id="exampleInputPassword1" placeholder="Phone No." value="<?php echo $student_data['phone_alternative'][0]; ?>">
+                </div>
+                
+              </div>
+
+               
+              <div class="row">
+                <div class="col-xs-3 form-group">
+                  <label for="exampleInputPassword1">Date Of Joining.</label>
+                  <input  required   type="text" name='date_of_joining'  class="datepicker form-control" id="exampleInputPassword1" placeholder="Date Of Joining"  value="<?php echo $student_data['date_of_joining'][0]; ?>">
+                </div>
+
+                <div class="col-xs-9 form-group">
+                <label>Course</label>
+
+<?php 
+
+$course_options = get_courses_array();
+
+
+echo form_dropdown('course', $course_options, $student_data['course'][0], ['class'=>'form-control','style'=>'width:100%']);
+
+?>
+
+                <!-- <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">Alabama</option>
+                  <option>Alaska</option>
+                  <option>California</option>
+                  <option>Delaware</option>
+                  <option>Tennessee</option>
+                  <option>Texas</option>
+                  <option>Washington</option>
+                </select> -->
+              </div>
+              </div>
+              <div class="form-group">
+                <label>Music Certification</label>
+                
+                <?php 
+
+$music_certification_options = get_certifications_array();
+
+
+echo form_dropdown('music_certification', $music_certification_options,$student_data['music_certification'][0] , ['class'=>'form-control','style'=>'width:100%']);
+
+?>
+
+              </div>
+             
+               
+               
+              </div>
+
+              
+              <!-- /.box-body -->
+<?php 
+
+echo form_hidden('update_student',$_GET['student_id'] );
+
+?>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-success btn-block">Update</button>
+              </div>
+            </form>
+
+
+<?php 
+endif;// form close for update form  
+?>
 <?php 
 
 if( isset ($student_id) ){ 
@@ -147,7 +286,7 @@ echo form_dropdown('music_certification', $music_certification_options,  $studen
 
 <!-- SAVED FORM END -->
 
-<?php } else { ?>
+<?php } else if( ! isset ( $_GET['student_id'] ) ) { ?>
 
 
             <!-- form start -->

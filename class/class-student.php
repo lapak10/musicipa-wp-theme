@@ -53,9 +53,26 @@ class IPA_Student{
         $date = DateTime::createFromFormat('d/m/Y', $date_string );
         $mysql_date = $date->format('Y-m-d');
 
-        return add_post_meta( $student_id ,'mysql_date',$mysql_date,true);
+        return update_post_meta( $student_id ,'mysql_date',$mysql_date);
 
 
+    }
+
+    public static function update_student( $student_id = -1 , $data_array ){
+
+        if( false === self :: is_valid_student ( $student_id ) ){
+            return false;
+        }
+
+        unset( $data_array['update_student'] );
+
+        foreach( $data_array as $key => $value ){
+            update_post_meta( $student_id , $key ,  $value );
+        }
+
+        self :: add_mysql_date ( $student_id , $data_array['date_of_joining'] );
+
+        return $student_id;
     }
 
     public static function apply_filter( $filter_array ){
@@ -99,6 +116,17 @@ class IPA_Student{
 
             return get_posts( $args );
         
+    }
+
+    public static function get_edit_link( $student_id = -1 ){
+        return add_query_arg( array(
+           
+            'student_id' => $student_id
+        ) , get_permalink( get_page_by_title('student') ) );
+    }
+
+    public static function is_valid_student( $student_id = -1 ){
+        return get_post_type( $student_id ) === self :: $post_type ;
     }
 
 

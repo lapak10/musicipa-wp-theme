@@ -126,7 +126,7 @@ echo form_dropdown('filter_course', $course_options, isset( $_GET['filter_course
         echo '<td>' . IPA_Student :: get_course ( $student_obj->ID ) . '</td>';
         echo '<td>' . IPA_Student :: get_phone_no ( $student_obj->ID ) . '</td>';
         echo '<td>' . IPA_Student :: get_date_of_joining ( $student_obj->ID ) . '</td>';
-        echo '<td>' . 'ACTION' . '</td>';
+        echo '<td>' . '<a type="button" href="'. IPA_Student :: get_edit_link( $student_obj->ID ) .'" class="btn btn-xs bg-maroon"><i class="fa fa-edit"></i> EDIT</a>' . '</td>';
         echo '</td>';
 
     } ?>

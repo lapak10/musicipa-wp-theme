@@ -48,7 +48,7 @@ if( isset( $_POST['student_id'] ) ){
 <!-- form start -->
 <form role="form" method='post'>
   
-<?php if(  ! is_object( $student_obj ) ){?>
+<?php if( ! is_object( $student_obj ) ){?>
 
     <?php
       if(isset( $student_obj )){

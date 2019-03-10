@@ -143,6 +143,12 @@ class IPA_Student{
 
 
     }
+    public static function get_all_students_count( $filter_args = [] ){
+
+        
+        return str_pad( count( self :: get_all_students() ) ,2,'0',STR_PAD_LEFT);
+
+    }
 
     public static function get_student_virtual_ipa_id( $id ='' ){
 

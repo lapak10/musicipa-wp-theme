@@ -35,6 +35,12 @@ class IPA_Lead{
 ) );
          
     }
+    public static function get_all_leads_count( $filter_args = [] ){
+
+        
+            return str_pad( count( self :: get_all_leads() ) ,2,'0',STR_PAD_LEFT);
+
+    }
 
   
 }

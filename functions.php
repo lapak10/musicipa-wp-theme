@@ -70,5 +70,7 @@ function get_certifications_array (  ){
 
  
 
+ 
+
   
 }

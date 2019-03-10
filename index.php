@@ -7,6 +7,26 @@ require_once('class/class-lead.php');
 
 require_once('class/class-fees.php');
 
+require_once('class/class-demo.php');
+
+function ipa_random_music_quote(){
+    $quotes = array(
+      '“Without music, life would be a blank to me.”― Jane Austen',
+      '“Music is the shorthand of emotion.” ― Leo Tolstoy',
+      '“Where words fail, music speaks.” ― Hans Christian Andersen',
+      '“Music is to the soul what words are to the mind.” ― Modest Mouse',
+      '“Music touches us emotionally, where words alone can’t.” ― Johnny Depp',
+      '“I like beautiful melodies telling me terrible things.” ― Tom Waits',
+      '“Who hears music, feels his solitude” ― Robert Browning',
+      '“The music is not in the notes, but in the silence between.”  ― Wolfgang Amadeus Mozart',
+      '“Music is the strongest form of magic.” ― Marilyn Manson',
+        '“Music is the wine that fills the cup of silence.” ― Robert Fripp',
+        '“Music is the language of the spirit. It opens the secret of life bringing peace, abolishing strife.” ― Kahlil Gibran',
+        '“Music in the soul can be heard by the universe.” ― Lao Tzu'
+    );
+
+    return $quotes[mt_rand(0, count($quotes) - 1)];
+  }
 
 ?>
 <?php 
@@ -63,7 +83,7 @@ else if ( is_page('all_fee') ){
 }
 
 else{
-    include('forms/student_form.php');
+    include('forms/dashboard.php');
 }
 
 

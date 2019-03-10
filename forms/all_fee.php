@@ -44,7 +44,7 @@
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Receipt No.</th>
                   <th>Name</th>
                   <th>Fee End Date</th>
                   <th>Fee Submit Date</th>
@@ -79,7 +79,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>ID</th>
+                <th>Receipt No.</th>
                   <th>Name</th>
                   <th>Course</th>
                   <th>Phone</th>

@@ -1,37 +1,4 @@
-<?php
-
-    // $menu = array(
-    //     'Students'=> array(['title'=>'student','display_name'=>'New Student'],['title'=>'all_student','display_name'=>'All Students']),
-    //     'Fees' => array(['title'=>'fee','display_name'=>'New Fee'],['title'=>'all_fee','display_name'=>'All Fees']),
-    //     'Leads' => array(['title'=>'lead','display_name'=>'New Lead'],['title'=>'all_lead','display_name'=>'All Leads'])
-    // );
-
-    // function musicipa_gen_menu($menu = []){
-
-    //     foreach( $menu as $parent_menu => $value){
-    //         echo '<li class="treeview '. in_array('lead') ? 'active':'' .'">
-    //         <a href="'. get_permalink( get_page_by_title('student') ) .'"><i class="fa fa-link"></i> <span>Student</span>
-    //           <span class="pull-right-container">
-    //               <i class="fa fa-angle-left pull-right"></i>
-    //             </span>
-    //         </a>';
-
-    //         echo '<ul class="treeview-menu">';
-
-    //             foreach($value as $sub_menu){
-    //                 echo '<li class="'. is_page('fee') ? 'active' : '' .'"><a href="'. get_permalink( get_page_by_title( $sub_menu ) ) .'">'. $sub_menu .'</a></li>';
-    //             }
-
-    //         echo '</ul></li>';
-
-    //     }
-
-
-    // }
-
-
-?>
-
+<li class="<?php echo is_home() ?'active':''  ?>"><a href="<?php echo get_home_url() ?>"><i class="fa fa-home"></i> <span>Home</span></a></li>
 <li class="treeview <?php echo ( is_page('student') OR is_page('all_student') )?'active':''  ?>">
       <a href="<?php echo get_permalink( get_page_by_title('all_student') ) ?>"><i class="fa fa-link"></i> <span>Student</span>
         <span class="pull-right-container">

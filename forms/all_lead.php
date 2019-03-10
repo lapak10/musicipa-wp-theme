@@ -46,7 +46,7 @@
 $course_options = get_courses_array( true );
 
 
-echo form_dropdown('filter_course', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'all'  , ['class'=>'form-control','style'=>'width:100%']);
+echo form_dropdown('filter_course', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'any'  , ['class'=>'form-control','style'=>'width:100%']);
 
 ?>
           </div>
@@ -61,11 +61,10 @@ $course_options = array(
   'kid'         => 'Kid',
   'teen'         => 'Teen',
   'adult'           => 'Adult'
-  
 );
 
 
-echo form_dropdown('filter_age_group', $course_options, isset( $_GET['filter_course'] )? $_GET['filter_course'] : 'all'  , ['class'=>'form-control','style'=>'width:100%']);
+echo form_dropdown('filter_age_group', $course_options, isset( $_GET['filter_age_group'] )? $_GET['filter_age_group'] : 'any'  , ['class'=>'form-control','style'=>'width:100%']);
 
 ?>
           </div>
@@ -122,7 +121,22 @@ echo form_dropdown('filter_age_group', $course_options, isset( $_GET['filter_cou
                 </thead>
                 <tbody>
                
-                <?php foreach( IPA_Lead :: get_all_leads() as $lead_obj ){
+                <?php 
+                
+                $all_leads = '';
+
+   if( isset( $_GET['filter_form'] ) ){
+
+    $all_leads = IPA_Lead :: apply_filter( $_GET );
+
+  }else{
+
+    $all_leads = IPA_Lead :: get_all_leads();
+
+  }
+
+
+                foreach( $all_leads as $lead_obj ){
 
 echo '<tr>';
 echo '<td>' .  $lead_obj->ID . '</td>';

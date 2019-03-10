@@ -48,7 +48,7 @@ if( isset( $_POST['student_id'] ) ){
 <!-- form start -->
 <form role="form" method='post'>
   
-<?php if( ! is_object( $student_obj ) ){?>
+<?php if(  ! is_object( $student_obj ) ){?>
 
     <?php
       if(isset( $student_obj )){
@@ -64,7 +64,7 @@ if( isset( $_POST['student_id'] ) ){
   <div class="box-body">
     <div class="form-group">
       <label for="exampleInputEmail1">Student ID</label>
-      <input required  type="text" name='student_ipa_id' class="form-control" id="exampleInputEmail1" placeholder="Example: DAV10134 or simply 10134">
+      <input required autocomplete='off' type="text" name='student_ipa_id' class="form-control" id="exampleInputEmail1" placeholder="Example: DAV10134 or simply 10134">
     </div>
 
   </div>

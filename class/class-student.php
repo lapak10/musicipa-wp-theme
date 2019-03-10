@@ -133,7 +133,7 @@ class IPA_Student{
                return $matching_trucks[0];
            }
 
-    public static function get_all_students( $filter_args = [] ){
+    public static function get_all_students(){
 
         return get_posts( array(
                     'posts_per_page' => -1,
@@ -143,10 +143,26 @@ class IPA_Student{
 
 
     }
-    public static function get_all_students_count( $filter_args = [] ){
+    public static function get_all_students_count(){
 
         
         return str_pad( count( self :: get_all_students() ) ,2,'0',STR_PAD_LEFT);
+
+    }
+
+    public static function get_all_students_select_options(){
+
+        $all_students_array = self :: get_all_students();
+         
+        $options_array = [];
+
+        foreach( $all_students_array as $student_obj ){
+            $options_array[ $student_obj->ID ] = self :: get_name( $student_obj->ID ) .' - ' . self :: get_student_virtual_ipa_id($student_obj->ID) ;
+        }
+
+        $options_array = ['any'=>'All']  + $options_array ;
+
+        return $options_array;
 
     }
 

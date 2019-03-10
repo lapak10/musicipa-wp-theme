@@ -5,9 +5,9 @@
     <?php  echo ipa_random_music_quote();  ?>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="#">IPA - Institute of Performing Arts</a></strong>
+    <strong>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="#"> IPA - Institute of Performing Arts</a></strong>
   </footer>
-
+<?php if( 1 > 0 ): ?>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -80,6 +80,9 @@
       <!-- /.tab-pane -->
     </div>
   </aside>
+<?php endif; ?>
+
+
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
@@ -97,7 +100,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!-- DataTables -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/dataTables.bootstrap.min.js"></script>
@@ -116,6 +119,8 @@ jQuery('.datepicker').datepicker({
     jQuery(".datepicker").attr('autocomplete',function(){
       return 'off';
     })
+
+    jQuery('#students_dropdown').select2();
 
     jQuery('.timepicker').timepicker({
       showInputs: false
